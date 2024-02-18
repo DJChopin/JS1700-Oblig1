@@ -8,24 +8,22 @@ document.getElementById('ticketForm').addEventListener('submit', function(event)
     let phone = document.getElementById('phone').value;
     let email = document.getElementById('email').value;
 
-    let ticketInfo = {
-        movie: movie,
-        ticketAmount: ticketAmount,
-        firstName: firstName,
-        lastName: lastName,
-        phone: phone,
-        email: email
-    };
+    if (!movie || !ticketAmount || !firstName || !lastName || !phone || !email) {
+        alert('Please fill in all fields.');
+        return;
+    }
+
+    let ticketInfo = [movie, ticketAmount, firstName, lastName, phone, email];
 
     let ticketList = document.getElementById('allTickets');
     let listItem = document.createElement('li');
 
-    listItem.innerHTML = "<b>Movie:</b> " + ticketInfo.movie + "<br>" +
-        "<b>Ticket Amount:</b> " + ticketInfo.ticketAmount + "<br>" +
-        "<b>First Name:</b> " + ticketInfo.firstName + "<br>" +
-        "<b>Last Name:</b> " + ticketInfo.lastName + "<br>" +
-        "<b>Phone:</b> " + ticketInfo.phone + "<br>" +
-        "<b>email:</b> " + ticketInfo.email;
+    listItem.innerHTML = "<b>Movie:</b> " + ticketInfo[0] + "<br>" +
+        "<b>Ticket Amount:</b> " + ticketInfo[1] + "<br>" +
+        "<b>First Name:</b> " + ticketInfo[2] + "<br>" +
+        "<b>Last Name:</b> " + ticketInfo[3] + "<br>" +
+        "<b>Phone:</b> " + ticketInfo[4] + "<br>" +
+        "<b>email:</b> " + ticketInfo[5];
     ticketList.appendChild(listItem);
 
     document.getElementById('movie').value = "";
